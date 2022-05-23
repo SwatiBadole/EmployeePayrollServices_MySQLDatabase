@@ -130,3 +130,28 @@ mysql> select * from employee_payrolls;
 |  4 | Shreya |  30000 | 2019-05-13 |
 +----+--------+--------+------------+
 3 rows in set (0.00 sec)
+
+=======================================================
+
+UC5: Ability to retrieve salary data for a particular
+employee as well as all employees who have joined in a
+particular data range from the payroll service database
+
+========================================================
+
+mysql> select salary from employee_payrolls where name='vijay';
++--------+
+| salary |
++--------+
+|  15000 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM employee_payrolls WHERE start BETWEEN CAST('2020-01-01' AS DATE) AND DATE(NOW());
++----+-------+--------+------------+
+| id | name  | salary | start      |
++----+-------+--------+------------+
+|  1 | Swati |  10000 | 2020-01-21 |
+|  2 | vijay |  15000 | 2021-07-02 |
++----+-------+--------+------------+
+2 rows in set (0.02 sec)
