@@ -180,3 +180,74 @@ mysql> select * from employee_payrolls;
 |  4 | Shreya | NULL   |  30000 | 2019-05-13 |
 +----+--------+--------+--------+------------+
 3 rows in set (0.00 sec)
+
+
+==============================================================================
+
+UC7:Ability to find sum, average, min, max and 
+number of male and female employees
+
+==============================================================================
+
+mysql> select * from employee_payrolls;
++----+--------+--------+--------+------------+
+| id | name   | gender | salary | start      |
++----+--------+--------+--------+------------+
+|  1 | Swati  | f      |  10000 | 2020-01-21 |
+|  2 | vijay  | M      |  15000 | 2021-07-02 |
+|  4 | Shreya | f      |  30000 | 2019-05-13 |
++----+--------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select gender, avg(salary) from employee_payrolls group by gender;
++--------+-------------+
+| gender | avg(salary) |
++--------+-------------+
+| f      |       20000 |
+| M      |       15000 |
++--------+-------------+
+2 rows in set (0.02 sec)
+
+mysql> select avg(salary) from employee_payrolls;
++--------------------+
+| avg(salary)        |
++--------------------+
+| 18333.333333333332 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select gender ,sum(salary) from employee_payrolls group by gender;
++--------+-------------+
+| gender | sum(salary) |
++--------+-------------+
+| f      |       40000 |
+| M      |       15000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select gender ,min(salary) from employee_payrolls group by gender;
++--------+-------------+
+| gender | min(salary) |
++--------+-------------+
+| f      |       10000 |
+| M      |       15000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select gender ,max(salary) from employee_payrolls group by gender;
++--------+-------------+
+| gender | max(salary) |
++--------+-------------+
+| f      |       30000 |
+| M      |       15000 |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> select count(salary) as count_of_salary from employee_payrolls;
++-----------------+
+| count_of_salary |
++-----------------+
+|               3 |
++-----------------+
+1 row in set (0.01 sec)
+
