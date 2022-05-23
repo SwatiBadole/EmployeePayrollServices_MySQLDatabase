@@ -71,3 +71,45 @@ mysql> describe employee_payrolls;
 | start  | date         | NO   |     | NULL    |                |
 +--------+--------------+------+-----+---------+----------------+
 4 rows in set (0.01 sec)
+
+============================================================
+
+UC3: Ability to create employee payroll data in the
+payroll service database as part of CURD Operation
+
+=============================================================
+
+mysql> INSERT INTO employee_payrolls(name, salary, start) VALUES
+    ->      ('Swati', 10000.00, '2020-01-21'),
+    ->      ('vijay', 15000.00, '2021-07-02'),
+    ->      ('Aish', 20000.00, '2022-02-15');
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employee_payrolls;
++----+-------+--------+------------+
+| id | name  | salary | start      |
++----+-------+--------+------------+
+|  1 | Swati |  10000 | 2020-01-21 |
+|  2 | vijay |  15000 | 2021-07-02 |
+|  3 | Aish  |  20000 | 2022-02-15 |
++----+-------+--------+------------+
+3 rows in set (0.00 sec)
+
+
+mysql> DELETE FROM employee_payrolls
+    ->      WHERE name = 'Aish';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_payrolls;
++----+-------+--------+------------+
+| id | name  | salary | start      |
++----+-------+--------+------------+
+|  1 | Swati |  10000 | 2020-01-21 |
+|  2 | vijay |  15000 | 2021-07-02 |
++----+-------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO employee_payrolls(name, salary, start) VALUES
+    ->     ('Shreya', 30000.00, '2019-05-13');
+Query OK, 1 row affected (0.01 sec)
